@@ -1,0 +1,36 @@
+{% extends 'klienci/base.html' %}
+
+
+{% block content %}
+<div class="container text-light">
+    <center>
+    {% if searched %}
+
+    <h1>Wynik wyszukiwania dla {{searched }}: </h1><br/>
+    {% for pet in pets %}
+        
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                <center><a href="{% url 'detail' pet.id %}">{{ pet.imie }}</a></center>
+            </div>
+            
+            <ul class="list-group list-group-flush"> 
+            <li class="list-group-item">Właściciel: {{ pet.owner }} </li>
+            <li class="list-group-item">Gatunek: {{ pet.gatunek }} </li>
+            <li class="list-group-item">Rasa: {{ pet.breed }} </li>
+            
+            <li class="list-group-item">Numer tel: {{ pet.phone_number }} </li>
+            
+            <li class="list-group-item">Miejscowość: {{ pet.city }} </li>
+            
+            </ul>
+        </div>
+        <br/>
+
+    {% endfor %}
+
+    {% else %}
+    <h1>Wpisz dane do wyszukania!</h1>
+    {% endif %}
+</div></center>
+{% endblock %}

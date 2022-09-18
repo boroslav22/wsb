@@ -1,0 +1,18 @@
+{% extends 'klienci/base.html' %}
+
+
+{% block content %}
+<div class="container text-light">
+    <center>
+    <h1>Edycja wizyty.</h1>
+    <div class="card border-success bg-transparent text-light" style="max-width: 18rem">
+        <form action="" method=POST>
+          {% csrf_token %}
+
+          {{ form.as_p }}
+        </div><br/>
+          <input type="submit" value="Zapisz" class="btn btn-success">
+    <br/>
+</center>   
+    
+{% endblock %}

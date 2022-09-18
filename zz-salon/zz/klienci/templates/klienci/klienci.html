@@ -1,0 +1,51 @@
+{% extends 'klienci/base.html' %}
+
+
+{% block content %}
+
+<div class="container text-light">
+  <center>
+    <strong>Ostatnio dodani klienci:</strong>
+    </br>
+  </center>
+    <div class="row">
+          {% for pet in latest_pets_list %}
+          <div class="col-sm-3">
+          <div class="card border-success bg-transparent text-light" style="max-width: 18rem">
+            <div class="card-body">
+              
+              <a href="{% url 'detail' pet.id %}">{{ pet }}</a>
+              <li> {{ pet.gatunek }} | {{ pet.breed }}</li>
+              <li> {{ pet.year_birth }}</li>
+            </div>
+          </div>
+          </div>
+          {% endfor %}
+    </div>
+</div>
+    <center>
+    <div class="container-sm text-light">
+      </br>
+      {% if submitted %}
+      <div class="alert alert-success" role="alert">
+        Zwierzak dodany poprawnie!
+      </div>
+      {% else %}
+      <center>
+      <strong>Dodaj zwierzaka do kartoteki:</strong>  
+      <div class="card border-success bg-transparent text-light" style="max-width: 18rem">
+        <form action="" method=POST><br/>
+          {% csrf_token %}
+
+          {{ form.as_p }}</div></br>
+          <input type="submit" value="Dodaj" class="btn btn-success">
+        </form>
+      
+    </center>
+      {% endif %}
+     
+    </div>
+  <br/><br/>
+    
+{% endblock %}
+

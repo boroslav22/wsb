@@ -1,0 +1,34 @@
+{% extends 'klienci/base.html' %}
+
+
+{% block content %}
+<div class="container text-light">
+    <center>
+        <a href="{% url 'add_visit' %}">
+      <div class="d-grid gap-1">
+        <button class="btn btn-success" type="button">Dodaj wizytę</button>
+      </div></a></center><br/>
+    <h1>Wizyty:</h1><br/>
+    
+    <div class="row">
+        
+    {% for visit in visit_list %}
+    <div class="col-sm-3">
+    <div class="card w-10">
+        <div class="card-header text-secondary border-success bg-opacity-75">
+            {{ visit.zwierze }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title text-secondary bg-opacity-75">{{ visit.visit_date }}</h5>
+          <p class="card-text text-secondary bg-opacity-75">{{ visit.visit_time }}</p>
+          <li class="list-group-item" align="right"> <a href="{% url 'edit_visit' visit.id %}" class="btn btn-outline-success">Edycja</a> </li>
+        </div>
+      
+    </div>
+    </div>
+    {% endfor %}
+    
+    
+    
+</div>
+{% endblock %}

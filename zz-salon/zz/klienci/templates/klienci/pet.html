@@ -1,0 +1,29 @@
+{% extends 'klienci/base.html' %}
+
+
+{% block content %}
+    
+        
+    <div class="container"><center>
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                <strong>{{ pet.imie }}</strong>
+            </div>
+        
+            <ul class="list-group list-group-flush"> 
+            <li class="list-group-item">Właściciel: <br/><strong>{{ pet.owner }}</strong> </li>
+            <li class="list-group-item">Gatunek: <br/><strong>{{ pet.gatunek }}</strong> </li>
+            <li class="list-group-item">Rasa: <br/><strong>{{ pet.breed }}</strong> </li>
+            <li class="list-group-item">Data dodania: <br/><strong>{{ pet.create_date }}</strong> </li>
+            <li class="list-group-item">Numer tel: <br/><strong>{{ pet.phone_number }}</strong> </li>
+            <li class="list-group-item">e-mail: <br/><strong>{{ pet.email }}</strong> </li>
+            <li class="list-group-item">Miejscowość: <br/><strong>{{ pet.city }}</strong> </li>
+            <li class="list-group-item">Płeć: <br/><strong>{{ pet.sex }}</strong> </li>
+            <li class="list-group-item">Ostatnia wizyta: <br/><strong>{{ pet.last_visit }}</strong> </li>
+            <li class="list-group-item">Uwagi: <br/><strong>{{ pet.comments }}</strong> </li>
+            <li class="list-group-item" align="right"> <a href="{% url 'edit_pet' pet.id %}" class="btn btn-outline-success">Edycja</a> </li>
+            </ul>
+        </div>
+    </div>
+</center>
+{% endblock %}

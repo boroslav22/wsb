@@ -1,0 +1,56 @@
+{% extends 'klienci/base.html' %}
+
+
+{% block content %}
+  <div class="container text-light">
+    <center>
+      <a href="{% url 'add_visit' %}">
+    <div class="d-grid gap-1">
+      <button class="btn btn-success" type="button">Dodaj wizytę</button>
+    </div></a></center>
+    <br/><br/>
+    <strong>Dzisiejsze wizyty:</strong>
+    </br>
+    
+  <div class="row">
+    {% for pet in today_pets %}
+    <div class="col-sm-3">
+    <div class="card border-success bg-transparent text-light" style="max-width: 18rem">
+      <div class="card-body">
+        
+        <a href="{% url 'detail' pet.zwierze.id %}">{{ pet.zwierze }}</a>
+    </br>
+      Godzina: {{ pet.visit_time }}
+    </br>
+      Ostatnio był: {{ pet.zwierze.last_visit|date:"j-n-Y" }}</li>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+
+</br>
+<div class="container text-light">
+  <strong>Jutrzejsze wizyty:</strong>
+  </br>
+  
+  <div class="row">
+    {% for pet in tomorrow_pets %}
+    <div class="col-sm-3">
+    <div class="card border-success bg-transparent text-light" style="max-width: 18rem">
+    <div class="card-body">
+      
+      <a href="{% url 'detail' pet.zwierze.id %}">{{ pet.zwierze }}</a>
+    </br>
+      Godzina: {{ pet.visit_time }}
+    </br>
+      Ostatnio był: {{ pet.zwierze.last_visit|date:"j-n-Y" }}</li>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+  </br></br></br></br></br></br></br></br></br></br></br></br></div>
+</div>
+
+{% endblock %}
